@@ -1,26 +1,26 @@
 #!/usr/bin/python3
+# Created by F1neg4n
 
 import os
 
 def welcome():
     welc = 'SSH Connect'
-    info = '[INFO] Python script to SSH connections.'
+    info = '[INFO] Python script to create SSH connections'
     os.system('clear')
     print(welc + '\n' + '*' * len(welc))
-    print(info)
-    print('------------')
+    print(info + '\n' + '-' * len(info))
     return
 
-def getIPAddress():
+def getAddress():
     welcome()
     try:
-        ipAddress = input('[+] IP Address: ')
+        ipAddress = input('[+] Enter the IP Address: ')
         while(ipAddress == ''):
-            ipAddress = input('[+] Please, enter IP Address: ')
+            ipAddress = input('[+] Please, enter the IP Address: ')
     except(KeyboardInterrupt):
         os.system('clear')
         welcome()
-        print('[!] Interrupted by user')
+        print('[-] Interrupted by user!')
         exit()
     return ipAddress
 
@@ -37,12 +37,13 @@ def getUser():
     return user
 
 def newConnection():
-    ipAddress = getIPAddress()
+    ipAddress = getAddress()
     user = getUser()
     try:
         welcome()
         print('[+] Creating new SSH connection...')
         print('[+] Connecting to ' + user + '@' + ipAddress + '...')
+        print('----')
         os.system('ssh -p 22 ' + user + '@' + ipAddress)
     except(KeyboardInterrupt):
         os.system('clear')
